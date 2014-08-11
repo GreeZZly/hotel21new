@@ -4,8 +4,8 @@ if ( !$_POST ) exit;
 if ( !defined( "PHP_EOL" ) ) define( "PHP_EOL", "\r\n" );
 
 
-$to = "yourmail@yourdomain.com";
-$subject = "Website contact form ";
+$to = "greezzly7@gmail.com";
+$subject = "Заказ с сайта На Складском";
 
 
 
@@ -29,26 +29,26 @@ $errors = array();
 if(isset($_POST["name"])){
  
         if (!$name) {
-            $errors[] = "You must enter a name.";
+            $errors[] = "Вы должны ввести имя.";
         } elseif(strlen($name) < 2)  {
-            $errors[] = "Name must be at least 2 characters.";
+            $errors[] = "Имя должно быть не меньше двух символов.";
         }
  
 }
     //php verif email
 if(isset($_POST["email"])){
     if (!$email) {
-        $errors[] = "You must enter an email.";
+        $errors[] = "Вы должны ввести email.";
     } else if (!validEmail($email)) {
-        $errors[] = "You must enter a valid email.";
+        $errors[] = "Вы должны ввести корректный email.";
     }
 }
     //php verif phone
 if(isset($_POST["phone"])){
     if (!$phone) {
-        $errors[] = "You must enter a correct phone number.";
+        $errors[] = "Вы должны ввести корректный номер телефона.";
     }elseif ( !is_numeric( $phone ) ) {
-        $errors[]= 'Your phone number can only contain digits.';
+        $errors[]= 'Номер телефона должен содержать только цифры.';
     }
 }
 
@@ -58,9 +58,9 @@ if(isset($_POST["phone"])){
 if(isset($_POST["comment"])){
     if (strlen($message) < 10) {
         if (!$message) {
-            $errors[] = "You must enter a message.";
+            $errors[] = "Вы должны ввести сообщение.";
         } else {
-            $errors[] = "Message must be at least 10 characters.";
+            $errors[] = "Сообщение должно быть не менее 10 символов.";
         }
     }
 }
@@ -68,9 +68,9 @@ if(isset($_POST["comment"])){
     //php verif captcha
 if(isset($_POST["verify"])){
     if (!$verify) {
-        $errors[] = "You must enter the security code";
+        $errors[] = "Вы должны ввести защитный код.";
     } else if (md5($verify) != $_SESSION['nekoCheck']['verify']) {
-        $errors[] = "The security code you entered is incorrect ";
+        $errors[] = "Защитный код введен неверно.";
     }
 }
 
@@ -81,7 +81,7 @@ if ($errors) {
         $errortext .= '<li>'. $error . "</li>";
     }
 
-    echo '<div class="alert alert-error">The following errors occured:<br><ul>'. $errortext .'</ul></div>';
+    echo '<div class="alert alert-error">Произошли следующие ошибки:<br><ul>'. $errortext .'</ul></div>';
 
 }else{
 
@@ -94,13 +94,13 @@ if ($errors) {
     $headers .= "Content-type: text/plain; charset=utf-8" . PHP_EOL;
     $headers .= "Content-Transfer-Encoding: quoted-printable" . PHP_EOL;
 
-    $mailBody  = "You have been contacted by $name" . PHP_EOL . PHP_EOL;
+    $mailBody  = "Вам написал $name" . PHP_EOL . PHP_EOL;
     $mailBody .= (!empty($company))?'Company: '. PHP_EOL.$company. PHP_EOL . PHP_EOL:'';
     $mailBody .= (!empty($quoteType))?'project Type: '. PHP_EOL.$quoteType. PHP_EOL . PHP_EOL:''; 
-    $mailBody .= "Message :" . PHP_EOL;
+    $mailBody .= "Сообщение :" . PHP_EOL;
     $mailBody .= $message . PHP_EOL . PHP_EOL;
-    $mailBody .= "You can contact $name via email, $email.";
-    $mailBody .= (isset($phone) && !empty($phone))?" Or via phone $phone." . PHP_EOL . PHP_EOL:'';
+    $mailBody .= "Вы можете связаться с $name по email, $email.";
+    $mailBody .= (isset($phone) && !empty($phone))?" или по телефону $phone." . PHP_EOL . PHP_EOL:'';
     $mailBody .= "-------------------------------------------------------------------------------------------" . PHP_EOL;
 
 
@@ -109,7 +109,7 @@ if ($errors) {
 
 
     if(mail($to, $subject, $mailBody, $headers)){
-        echo '<div class="alert alert-success">Success! Your message has been sent.</div>';
+        echo '<div class="alert alert-success">Успшено! Ваше сообщение было отправлено.</div>';
     }
 }
 
