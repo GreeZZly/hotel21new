@@ -766,7 +766,7 @@ margin-bottom:-44px;
 	margin-top:66px;
 	}
 	.flexslider .slides > li {height:200px;}
-	#homeFullScreen .flexslider .slides > li{height:100px;}
+	#homeFullScreen .flexslider .slides > li{height:100px;margin: 5px 0;}
 }
 
 @media(min-width:1200px){
