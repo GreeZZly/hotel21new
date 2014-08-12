@@ -4,7 +4,7 @@ if ( !$_POST ) exit;
 if ( !defined( "PHP_EOL" ) ) define( "PHP_EOL", "\r\n" );
 
 
-$to = "livneсtok.21@mail.ru";
+$to = "greezzly7@gmail.com";
 $subject = "Заказ с сайта На Складском";
 
 
